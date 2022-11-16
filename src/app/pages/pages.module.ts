@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeModule } from './home/home.module';
 import { PagesComponent } from './pages.component';
+import { CoursesModule } from './courses/courses.module';
 
 
 
@@ -11,7 +12,8 @@ import { PagesComponent } from './pages.component';
   ],
   imports: [
     CommonModule,
-    HomeModule
+    HomeModule,
+    CoursesModule
   ],
   exports: [
     PagesComponent

@@ -2,16 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { RouterModule } from "@angular/router";
 
 const comps = [
   HeaderComponent,
-  FooterComponent
+  FooterComponent,
+  NotFoundComponent
 ]
 
 @NgModule({
-  declarations: [comps],
+  declarations: [comps, NotFoundComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [comps]
 })

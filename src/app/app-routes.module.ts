@@ -5,17 +5,12 @@ import { NotFoundComponent } from "./shared/components/not-found/not-found.compo
 const routes: Routes = [
   // lazy load
   {
-    path: 'demo',
-    loadChildren: () => import('./demo/demo.module').then(m => m.DemoModule)
-  },
-  {
     path: '',
     loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
   },
   {
-    path: '',
-    redirectTo: '',
-    pathMatch: 'full'
+    path: 'demo',
+    loadChildren: () => import('./demo/demo.module').then(m => m.DemoModule)
   },
   {
     path: '**',

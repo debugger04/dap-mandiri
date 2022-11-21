@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-comp-b',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompBComponent implements OnInit {
 
-  constructor() { }
+  id: string = '';
+
+  constructor(
+    private readonly route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe({
+      next: (params) => {
+        console.log('params:', params['id']);
+        this.id = params['id'];
+      }
+    })
   }
 
 }

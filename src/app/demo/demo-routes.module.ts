@@ -19,15 +19,15 @@ const routes: Routes = [
           path: 'child-teteh', // /component-a/child-ab
           component: ChildTetehComponent
         },
-        {
-          path: '',
-          redirectTo: '/demo/comp-a/child-aa',
-          pathMatch: 'full'
-        }
+        // {
+        //   path: '',
+        //   redirectTo: '/demo/comp-a/child-aa',
+        //   pathMatch: 'full'
+        // }
       ]
     },
     {
-      path: 'comp-b',
+      path: 'comp-b/:id',
       component: CompBComponent
     },
     {

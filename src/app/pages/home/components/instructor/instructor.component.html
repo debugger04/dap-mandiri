@@ -3,108 +3,18 @@
         <div class="row text-center text-light g-4">
             <h1>Our Instructor</h1>
             <p class="lead">Our instructor all have 5+ years working as a web developer in the industry</p>
-            <div class="col-md">
+            <div class="col-md" *ngFor="let x of instructors">
                 <div class="card bg-light text-dark">
                     <div class="card-body text-center">
                         <div class="h1 mb-3">
-                            <img src="https://preview.redd.it/v0caqchbtn741.jpg?auto=webp&s=c5d05662a039c031f50032e22a7c77dfcf1bfddc" alt="Muka saya" class="img-fluid rounded-circle">
+                            <img src="{{ x.img }}" alt="Muka saya" class="img-fluid rounded-circle">
                         </div>
-                        <h3 class="card-title mb-3">Saya sendiri</h3>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget magna volutpat, vehicula ligula vitae, tempus metus.</p>
+                        <h3 class="card-title mb-3">{{ x.name }}</h3>
+                        <p class="card-text">{{ x.desc }}</p>
                         <div class="container">
                             <div class="row text-center text-dark">
-                                <div class="col-md">
-                                    <a href="#" class="btn"><i class="bi bi-twitter"></i></a>
-                                </div>
-                                <div class="col-md">
-                                    <a href="#" class="btn"><i class="bi bi-facebook"></i></a>
-                                </div>
-                                <div class="col-md">
-                                    <a href="#" class="btn"><i class="bi bi-linkedin"></i></a>
-                                </div>
-                                <div class="col-md">
-                                    <a href="#" class="btn"><i class="bi bi-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md">
-                <div class="card bg-light text-dark">
-                    <div class="card-body text-center">
-                        <div class="h1 mb-3">
-                            <img src="https://preview.redd.it/v0caqchbtn741.jpg?auto=webp&s=c5d05662a039c031f50032e22a7c77dfcf1bfddc" alt="Muka saya" class="img-fluid rounded-circle">
-                        </div>
-                        <h3 class="card-title mb-3">Saya sendiri</h3>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget magna volutpat, vehicula ligula vitae, tempus metus.</p>
-                        <div class="container">
-                            <div class="row text-center text-dark">
-                                <div class="col-md">
-                                    <a href="#" class="btn"><i class="bi bi-twitter"></i></a>
-                                </div>
-                                <div class="col-md">
-                                    <a href="#" class="btn"><i class="bi bi-facebook"></i></a>
-                                </div>
-                                <div class="col-md">
-                                    <a href="#" class="btn"><i class="bi bi-linkedin"></i></a>
-                                </div>
-                                <div class="col-md">
-                                    <a href="#" class="btn"><i class="bi bi-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md">
-                <div class="card bg-light text-dark">
-                    <div class="card-body text-center">
-                        <div class="h1 mb-3">
-                            <img src="https://preview.redd.it/v0caqchbtn741.jpg?auto=webp&s=c5d05662a039c031f50032e22a7c77dfcf1bfddc" alt="Muka saya" class="img-fluid rounded-circle">
-                        </div>
-                        <h3 class="card-title mb-3">Saya sendiri</h3>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget magna volutpat, vehicula ligula vitae, tempus metus.</p>
-                        <div class="container">
-                            <div class="row text-center text-dark">
-                                <div class="col-md">
-                                    <a href="#" class="btn"><i class="bi bi-twitter"></i></a>
-                                </div>
-                                <div class="col-md">
-                                    <a href="#" class="btn"><i class="bi bi-facebook"></i></a>
-                                </div>
-                                <div class="col-md">
-                                    <a href="#" class="btn"><i class="bi bi-linkedin"></i></a>
-                                </div>
-                                <div class="col-md">
-                                    <a href="#" class="btn"><i class="bi bi-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md">
-                <div class="card bg-light text-dark">
-                    <div class="card-body text-center">
-                        <div class="h1 mb-3">
-                            <img src="https://preview.redd.it/v0caqchbtn741.jpg?auto=webp&s=c5d05662a039c031f50032e22a7c77dfcf1bfddc" alt="Muka saya" class="img-fluid rounded-circle">
-                        </div>
-                        <h3 class="card-title mb-3">Saya sendiri</h3>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget magna volutpat, vehicula ligula vitae, tempus metus.</p>
-                        <div class="container">
-                            <div class="row text-center text-dark">
-                                <div class="col-md">
-                                    <a href="#" class="btn"><i class="bi bi-twitter"></i></a>
-                                </div>
-                                <div class="col-md">
-                                    <a href="#" class="btn"><i class="bi bi-facebook"></i></a>
-                                </div>
-                                <div class="col-md">
-                                    <a href="#" class="btn"><i class="bi bi-linkedin"></i></a>
-                                </div>
-                                <div class="col-md">
-                                    <a href="#" class="btn"><i class="bi bi-instagram"></i></a>
+                                <div class="col" *ngFor="let sosmed of x.socialMedia">
+                                    <a href="{{ sosmed.ref }}" class="btn"><i class="{{ sosmed.icon }}"></i></a>
                                 </div>
                             </div>
                         </div>

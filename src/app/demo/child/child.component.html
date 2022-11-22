@@ -1,0 +1,12 @@
+<h1 class="text-warning">Child</h1>
+<h2>{{ counter }}</h2>
+
+<div class="btn-group mt-1">
+    <button class="btn btn-outline-danger" (click)="decrement()">-</button>
+    <button class="btn btn-outline-success" (click)="increment()">+</button>
+</div>
+
+<div class="form-group mt-1">
+    <h2>Form Mandirian</h2>
+    <input type="text" class="form-control" (change)="sendStringMandiri($event)">
+</div>

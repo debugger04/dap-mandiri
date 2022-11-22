@@ -6,6 +6,8 @@ import { CompBComponent } from './comp-b/comp-b.component';
 import { ChildAaComponent } from './comp-a/child-aa/child-aa.component';
 import { ChildTetehComponent } from './comp-a/child-teteh/child-teteh.component';
 import { DemoRoutesModule } from './demo-routes.module';
+import { ParentComponent } from './parent/parent.component';
+import { ChildComponent } from './child/child.component';
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import { DemoRoutesModule } from './demo-routes.module';
     CompAComponent,
     CompBComponent,
     ChildAaComponent,
-    ChildTetehComponent
+    ChildTetehComponent,
+    ParentComponent,
+    ChildComponent
   ],
   imports: [
     CommonModule,

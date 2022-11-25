@@ -1,0 +1,14 @@
+<form (ngSubmit)="onSubmitTodo()" [formGroup]="todoForm">
+  <div class="input-group mb-3">
+    <div class="input-group-text">
+      <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input" formControlName="isCompleted">
+    </div>
+    <input id="name" name="name" type="text" class="form-control" aria-label="Text input with checkbox" formControlName="name" required="" [ngClass]="{'is-invalid' : isValidated('name')}">
+    <button *ngIf="todoForm.valid" appButtonStyle color="warning" size="md">Save</button>
+  </div>
+  <div class="text-end">
+    <small class="d-inline-flex mb-3 px-2 py-1 fw-semibold bg-opacity-10 border border-success border-opacity-10 rounded-2" [ngClass]="{'text-danger bg-danger' : name.errors?.['required'], 'text-success bg-success' : !name.errors?.['required']}">
+      Must not be empty <i class="bi" [ngClass]="{'bi-x' : name.errors?.['required'], 'bi-check' : !name.errors?.['required']}"></i>
+    </small>
+  </div>
+</form>

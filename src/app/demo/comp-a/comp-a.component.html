@@ -1,0 +1,31 @@
+<h1>Component A</h1>
+<ul id="uuu" class="list-group mb-5">
+    <li class="list-group-item" routerLink="/demo/comp-a/child-aa">Child AA</li>
+    <li class="list-group-item" routerLink="/demo/comp-a/child-teteh">Child Teteh</li>
+</ul>
+<div class="m-5">
+    <router-outlet></router-outlet>
+</div>
+
+<div class="btn-group">    
+    <button class="btn btn-outline-primary" routerLink="/demo/comp-b">Go to Component B</button>
+    <button class="btn btn-outline-primary" [disabled]="btnDisable" (click)="showMe()">Enable Button</button>
+</div>
+
+<div [innerHTML]="message"></div>
+
+<div class="form-group m-5">
+    <input type="text" class="form-control" (change)="onMessageInput($event)">
+    <h3 class="form-label" [innerHTML]="messageInput"></h3>
+</div>
+<!-- 
+<p *ngIf="name">Name : {{name}}</p>
+<p *ngIf="address">Addres : {{address}}</p>
+
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let x of mandiriEmployees; index as i">
+        <span [ngStyle]="{'color': i % 2 == 0 ? 'gold' : 'blue'}">
+            {{i+1}}. {{ x.name }}, {{ x.address }}, {{ x.unit }}
+        </span>
+    </li>
+</ul> -->

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Todo } from '../model/todo.model';
+import { TodoService } from '../services/todo.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -8,16 +9,17 @@ import { Todo } from '../model/todo.model';
 })
 export class TodoListComponent implements OnInit {
 
-  @Input() todos: Todo[] = [];
-  @Output() editTodo: EventEmitter<Todo> = new EventEmitter<Todo>();
-  @Output() toggleTodo: EventEmitter<Todo> = new EventEmitter<Todo>();
+  todos: Todo[] = [];
   @Output() deleteTodo: EventEmitter<Todo> = new EventEmitter<Todo>();
 
   opacity = 'opacity: 0;';
 
-  constructor() { }
+  constructor(private readonly todoService: TodoService) { }
 
   ngOnInit(): void {
+    this.todos = this.todoService.getAll();
+    console.log(this.todos);
+    
   }
 
   onMouseover(): void {
@@ -33,12 +35,7 @@ export class TodoListComponent implements OnInit {
   }
 
   onCheckTodo(todo: Todo): void {
-    todo.isCompleted = !todo.isCompleted;
-    this.toggleTodo.emit(todo);
-  }
-
-  onEditTodo(todo: Todo): void {
-    this.editTodo.emit(todo);
+    this.todoService.toggle(todo)
   }
 
 }

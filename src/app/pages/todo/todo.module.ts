@@ -6,6 +6,7 @@ import { TodoFormComponent } from './todo-form/todo-form.component';
 import { TodoRoutesModule } from './todo-routes.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { TodoService } from './services/todo.service';
 
 
 
@@ -21,6 +22,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     FormsModule,
     ReactiveFormsModule,
     SharedModule
-  ]
+  ],
+  providers: [TodoService]
 })
 export class TodoModule { }

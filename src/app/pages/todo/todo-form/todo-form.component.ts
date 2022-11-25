@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Todo } from '../model/todo.model';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms'
+import { TodoService } from '../services/todo.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-todo-form',
@@ -10,24 +12,31 @@ import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/fo
 export class TodoFormComponent implements OnInit {
 
   @Input() todo: Todo = <Todo>{};
-  @Output() todoChange: EventEmitter<Todo> = new EventEmitter<Todo>();
+  tod: Todo = <Todo>{};
   todoForm: FormGroup = new FormGroup({
     id: new FormControl(null),
     name: new FormControl('', [
       Validators.required,
       // Validators.minLength(4)
-      Validators.pattern('[a-zA-z]*')
+      // Validators.pattern('[a-zA-z]*')
     ]),
     isCompleted: new FormControl(false)
   });
 
-  constructor() { }
+  constructor(private readonly todoService: TodoService, private readonly route: ActivatedRoute) { }
 
   get name() {
     return this.todoForm.get('name')!;
   }
 
   ngOnInit(): void {
+    this.route.params.subscribe({
+      next: (params) => {
+        this.tod = this.todoService.getTodo(params['id']);
+        console.log(this.tod);
+        this.setFormValue(this.tod);
+      }
+    })
   }
 
   ngOnChanges(): void {
@@ -36,8 +45,7 @@ export class TodoFormComponent implements OnInit {
   }
 
   onSubmitTodo(): void {
-    this.todo = this.todoForm.value;
-    this.todoChange.emit(this.todo);
+    this.todoService.save(this.todoForm.value)
     this.todoForm.reset();
   }
 

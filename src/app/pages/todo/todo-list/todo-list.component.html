@@ -13,7 +13,7 @@
                     <button class="btn btn-link btn-sm float-end text-danger" (click)="onDeleteTodo(todo)" *ngIf="!todo.isCompleted">
                         <i class="bi bi-trash" style="font-size: 1.2rem"></i>
                     </button>
-                    <button class="btn btn-link btn-sm float-end" (click)="onEditTodo(todo)">
+                    <button class="btn btn-link btn-sm float-end" routerLink="/todo/{{ todo.id }}">
                         <i class="bi bi-pencil-square" style="font-size: 1.2rem"></i>
                     </button>
                 </span>

@@ -5,11 +5,11 @@
     <div class="row">
         <div class="col mx-3">
             <h3>List</h3>
-            <app-todo-list [todos]="todos" (deleteTodo)="onDeletedTodo($event)" (toggleTodo)="onToggleTodo()" (editTodo)="onEditedTodo($event)"></app-todo-list>
+            <app-todo-list></app-todo-list>
         </div>
         <div class="col mx-3">
             <h3>Add to do item</h3>
-            <app-todo-form [(todo)]="todo"></app-todo-form>
+            <app-todo-form></app-todo-form>
         </div>
     </div>
 </div>

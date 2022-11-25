@@ -30,9 +30,6 @@ import { HomeRoutesModule } from './home-routes.module';
     CommonModule,
     RouterModule,
     HomeRoutesModule
-  ],
-  exports: [
-    HomeComponent
   ]
 })
 export class HomeModule { }

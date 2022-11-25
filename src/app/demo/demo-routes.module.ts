@@ -37,7 +37,7 @@ const routes: Routes = [
     },
     {
         path: '',
-        redirectTo: '/demo/comp-a/child-aa',
+        redirectTo: '/demo/comp-a',
         pathMatch: "full"
     }
   ];

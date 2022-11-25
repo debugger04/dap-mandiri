@@ -41,6 +41,17 @@ export class CompAComponent implements OnInit {
     },
   ]
 
+  constructor(private readonly route: ActivatedRoute) { }
+
+  ngOnInit(): void {
+    // this.route.queryParams.subscribe((params) => {
+    //   const {name, address} = params;
+    //   this.name = name;
+    //   this.address = address;
+    // });
+    this.checkButton();
+  }
+
   checkButton(): void {
     setTimeout(() => {
       if(this.btnDisable) {
@@ -74,17 +85,6 @@ export class CompAComponent implements OnInit {
     } else {
       this.messageInput = "Aku tetap cinta Bank Mandiri~";
     }
-  }
-
-  constructor(private readonly route: ActivatedRoute) { }
-
-  ngOnInit(): void {
-    // this.route.queryParams.subscribe((params) => {
-    //   const {name, address} = params;
-    //   this.name = name;
-    //   this.address = address;
-    // });
-    this.checkButton();
   }
 
 }

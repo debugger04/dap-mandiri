@@ -10,7 +10,6 @@ import { TodoService } from '../services/todo.service';
 export class TodoListComponent implements OnInit {
 
   todos: Todo[] = [];
-  @Output() deleteTodo: EventEmitter<Todo> = new EventEmitter<Todo>();
 
   opacity = 'opacity: 0;';
 
@@ -18,8 +17,6 @@ export class TodoListComponent implements OnInit {
 
   ngOnInit(): void {
     this.todos = this.todoService.getAll();
-    console.log(this.todos);
-    
   }
 
   onMouseover(): void {
@@ -31,7 +28,7 @@ export class TodoListComponent implements OnInit {
   }
 
   onDeleteTodo(todo: Todo): void {
-    this.deleteTodo.emit(todo);
+    this.todoService.delete(todo);
   }
 
   onCheckTodo(todo: Todo): void {

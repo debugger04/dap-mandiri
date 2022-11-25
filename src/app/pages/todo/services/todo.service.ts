@@ -40,4 +40,10 @@ export class TodoService {
   getTodo(id: number): Todo {
     return this.todos.find((x) => x.id == id) as Todo;
   }
+
+  delete(todo: Todo): void {
+    const idx = this.todos.indexOf(todo);
+    this.todos.splice(idx, 1);
+    sessionStorage.setItem('todoItems', JSON.stringify(this.todos));
+  }
 }

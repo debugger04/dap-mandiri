@@ -10,16 +10,13 @@ import { TodoService } from '../services/todo.service';
 export class TodoListComponent implements OnInit {
 
   todos: Todo[] = [];
-  @Output() deleteTodo: EventEmitter<Todo> = new EventEmitter<Todo>();
 
   opacity = 'opacity: 0;';
 
   constructor(private readonly todoService: TodoService) { }
 
   ngOnInit(): void {
-    this.todos = this.todoService.getAll();
-    console.log(this.todos);
-    
+    this.onLoadTodo();
   }
 
   onMouseover(): void {
@@ -30,12 +27,20 @@ export class TodoListComponent implements OnInit {
     this.opacity = 'opacity: 0;'
   }
 
+  onLoadTodo(): void {
+    this.todoService.getAll().subscribe({
+      next: (p: Todo[]) => {
+        this.todos = p;
+      }
+    });
+  }
+
   onDeleteTodo(todo: Todo): void {
-    this.deleteTodo.emit(todo);
+    this.todoService.delete(todo).subscribe();
   }
 
   onCheckTodo(todo: Todo): void {
-    this.todoService.toggle(todo)
+    this.todoService.toggle(todo).subscribe();
   }
 
 }

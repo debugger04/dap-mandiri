@@ -7,6 +7,8 @@ import { RouterModule } from "@angular/router";
 import { HighlightDirective } from './directives/highlight.directive';
 import { ButtonStyleDirective } from './directives/button-style.directive';
 import { CustomDatePipe } from './pipes/custom-date.pipe';
+import { ValidationComponent } from './components/validation/validation.component';
+import { StringUtil } from './utils/string.util';
 
 const comps = [
   HeaderComponent,
@@ -14,7 +16,8 @@ const comps = [
   NotFoundComponent,
   HighlightDirective,
   ButtonStyleDirective,
-  CustomDatePipe
+  CustomDatePipe,
+  ValidationComponent
 ]
 
 @NgModule({
@@ -23,6 +26,7 @@ const comps = [
     CommonModule,
     RouterModule
   ],
-  exports: [comps]
+  exports: [comps],
+  providers: [StringUtil]
 })
 export class SharedModule { }

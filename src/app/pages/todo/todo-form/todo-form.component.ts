@@ -11,14 +11,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TodoFormComponent implements OnInit {
 
-  @Input() todo: Todo = <Todo>{};
-  tod: Todo = <Todo>{};
+  todo: Todo = <Todo>{};
   todoForm: FormGroup = new FormGroup({
     id: new FormControl(null),
     name: new FormControl('', [
-      Validators.required,
-      // Validators.minLength(4)
-      // Validators.pattern('[a-zA-z]*')
+      Validators.required
     ]),
     isCompleted: new FormControl(false)
   });
@@ -32,20 +29,18 @@ export class TodoFormComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe({
       next: (params) => {
-        this.tod = this.todoService.getTodo(params['id']);
-        console.log(this.tod);
-        this.setFormValue(this.tod);
+        this.todoService.getTodo(params['id']).subscribe({
+          next: (p: Todo) => {
+            this.todo = p;
+            this.setFormValue(this.todo);
+          }
+        });
       }
-    })
-  }
-
-  ngOnChanges(): void {
-    console.log('Todoo', this.todo)
-    this.setFormValue(this.todo);
+    });
   }
 
   onSubmitTodo(): void {
-    this.todoService.save(this.todoForm.value)
+    this.todoService.save(this.todoForm.value).subscribe();
     this.todoForm.reset();
   }
 

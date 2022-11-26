@@ -16,7 +16,7 @@ export class TodoListComponent implements OnInit {
   constructor(private readonly todoService: TodoService) { }
 
   ngOnInit(): void {
-    this.todos = this.todoService.getAll();
+    this.onLoadTodo();
   }
 
   onMouseover(): void {
@@ -27,12 +27,20 @@ export class TodoListComponent implements OnInit {
     this.opacity = 'opacity: 0;'
   }
 
+  onLoadTodo(): void {
+    this.todoService.getAll().subscribe({
+      next: (p: Todo[]) => {
+        this.todos = p;
+      }
+    });
+  }
+
   onDeleteTodo(todo: Todo): void {
-    this.todoService.delete(todo);
+    this.todoService.delete(todo).subscribe();
   }
 
   onCheckTodo(todo: Todo): void {
-    this.todoService.toggle(todo)
+    this.todoService.toggle(todo).subscribe();
   }
 
 }

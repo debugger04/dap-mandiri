@@ -29,15 +29,18 @@ export class TodoFormComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe({
       next: (params) => {
-        this.todo = this.todoService.getTodo(params['id']);
-        console.log(this.todo);
-        this.setFormValue(this.todo);
+        this.todoService.getTodo(params['id']).subscribe({
+          next: (p: Todo) => {
+            this.todo = p;
+            this.setFormValue(this.todo);
+          }
+        });
       }
-    })
+    });
   }
 
   onSubmitTodo(): void {
-    this.todoService.save(this.todoForm.value)
+    this.todoService.save(this.todoForm.value).subscribe();
     this.todoForm.reset();
   }
 
